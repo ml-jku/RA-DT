@@ -1,0 +1,27 @@
+kind: HelmDT
+
+# positions are done by pre-trained model
+global_pos_embds: True
+relative_pos_embds: False
+use_time_embds: False
+stochastic_policy: False
+
+# retrieve based on s,a,r,rtg
+reward_condition: True
+rtg_condition: True
+
+# frozenhopfield
+on_rtgs: True
+
+# tokenization
+# we are using reward_scale=100 for dmc,
+# min_rewards=0 max_reward=10 / 100 = 0.1 --> 50 bins --> every bin represents 0.25 rewards
+# min_rtg=0, max_rtg=1000 / 100 = 10 --> 400 bins --> every bin represents 5 RTG points
+r_tok_kwargs: 
+  min_val: 0
+  max_val: 0.05
+  vocab_size: 50
+rtg_tok_kwargs: 
+  min_val: 0
+  max_val: 10
+  vocab_size: 400

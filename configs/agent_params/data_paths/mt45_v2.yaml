@@ -1,0 +1,3 @@
+base: ${DATA_DIR}/metaworld
+defaults:
+  - names: mt45_v2

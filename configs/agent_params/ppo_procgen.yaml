@@ -1,0 +1,18 @@
+kind: "PPO"
+policy: "CnnPolicy"
+ent_coef: 0.01
+# https://arxiv.org/pdf/1912.01588.pdf
+gae_lambda: 0.95
+batch_size: 2048
+gamma: 0.999
+# num_envs == 64 --> 16384 steps
+n_steps: 256
+n_epochs: 3
+learning_rate: 5e-4 
+
+policy_kwargs: 
+  impala: True
+  net_arch: []
+  features_extractor_kwargs: 
+    features_dim: 2048
+    model_size: 1

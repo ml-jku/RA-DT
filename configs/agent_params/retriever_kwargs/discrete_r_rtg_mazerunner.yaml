@@ -1,0 +1,28 @@
+kind: DHelmDT
+
+# positions are done by pre-trained model
+global_pos_embds: True
+relative_pos_embds: False
+use_time_embds: False
+stochastic_policy: False
+
+# retrieve based on s,a,r,rtg
+reward_condition: True
+rtg_condition: True
+
+# frozenhopfield
+on_rtgs: True
+
+# tokenization
+tokenize_a: False
+tokenize_r: True
+tokenize_rtg: True
+tokenize_s: False
+r_tok_kwargs: 
+  min_val: 0
+  max_val: 1
+  vocab_size: 2
+rtg_tok_kwargs: 
+  min_val: 0
+  max_val: 3
+  vocab_size: 4

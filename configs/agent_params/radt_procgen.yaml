@@ -1,0 +1,89 @@
+kind: "DCDT"
+use_critic: False
+learning_starts: 0
+batch_size: 128
+gradient_steps: 1
+stochastic_policy: False
+loss_fn: "ce"
+ent_coef: 0.0
+offline_steps: ${run_params.total_timesteps}
+buffer_max_len_type: "transition"
+buffer_size: 80000000 # 8e7
+buffer_weight_by: len 
+warmup_steps: 4000
+learnable_ret: True
+use_amp: True 
+compile: True
+frozen: False
+sep_eval_cache: True
+# return conditioning
+# target_return_loss_fn_type: ce
+target_return_type: predefined
+# a_sample_kwargs:
+#     top_p: 0.5
+# query type
+representation_type: mean
+cache_steps: 50 
+cache_len: ${agent_params.cache_steps}
+agg_token: s
+reinit_policy: True
+
+freeze_kwargs: 
+  exclude_crossattn: True
+
+replay_buffer_kwargs:
+  num_workers: 16
+  pin_memory: False
+  from_disk: False
+
+cache_kwargs:
+  num_workers: 0
+  prefetch_factor: null
+  pin_memory: False
+  init_top_p: 1
+  exclude_same_trjs: True
+  task_weight: 1
+  reweight_top_k: 1
+  # min_seq_len: 10
+  share_trjs: True
+  from_disk: False
+  index_kwargs: 
+    nb_cores: 64
+    # go with Flat index for now, others have colissions and are slower with high nprobe
+    index_key: Flat
+
+eval_cache_kwargs: 
+  index_kwargs: 
+    nb_cores: ${agent_params.cache_kwargs.index_kwargs.nb_cores}
+  return_weight: 1
+  top_k: 50
+  reweight_top_k: ${agent_params.cache_kwargs.reweight_top_k}
+
+# load kwargs for image encoder
+load_path:
+  dir_path: ${MODELS_DIR}/procgen_encoders_custom_v2
+  file_name: dt_mediumplus_64.zip
+
+defaults:
+  - huggingface: dt_mediumplus_64
+  - data_paths: procgen12
+  - data_paths@cache_data_paths: ${agent_params/data_paths}
+  - model_kwargs: procgen
+  - lr_sched_kwargs: cosine
+
+huggingface:
+  activation_function: gelu
+  max_length: 50
+  add_cross_attention: True
+  output_attentions: False
+  n_positions: 1600
+eval_context_len: ${agent_params.huggingface.max_length}
+
+model_kwargs: 
+  global_pos_embds: True
+  # tokenize_rtg: True
+  # rtg_tok_kwargs: 
+  #   min_val: 0
+  #   max_val: 100
+  separate_ca_embed: True
+  img_is_encoded: True

@@ -1,0 +1,4 @@
+num_workers: 16
+pin_memory: False
+max_act_dim: 6
+max_state_dim: 204

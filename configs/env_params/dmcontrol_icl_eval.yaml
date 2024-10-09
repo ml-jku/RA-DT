@@ -1,0 +1,16 @@
+envid: dmcontrol11_icl
+reward_scale: 100
+target_return: 1000
+num_envs: 1
+norm_obs: False
+record: True
+record_eval: True
+# we do 30 eval episodes, every ep has 1000 steps
+record_freq: 10000
+record_length: 2000
+eval_env_names: "dmcontrol5_icl"
+dmc_env_kwargs: 
+  flatten_obs: False
+  render_mode: "rgb_array"
+  height: 256
+  width: 256
