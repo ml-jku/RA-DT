@@ -2,7 +2,7 @@
 [![arXiv](https://img.shields.io/badge/arXiv-2410.07071-b31b1b.svg)](https://arxiv.org/abs/2410.07071)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Thomas Schmied<sup>**1**</sup>, Fabian Paischer<sup>**1**</sup>, Vihang Patil<sup>**1**</sup>, Markus Hofmarcher<sup>**2**</sup>, Razvan Pacscanu<sup>**3,4**</sup>, Sepp Hochreiter<sup>**1,5**</sup> 
+Thomas Schmied<sup>**1**</sup>, Fabian Paischer<sup>**1**</sup>, Vihang Patil<sup>**1**</sup>, Markus Hofmarcher<sup>**2**</sup>, Razvan Pascanu<sup>**3,4**</sup>, Sepp Hochreiter<sup>**1,5**</sup> 
 
 <sup>**1**</sup>ELLIS Unit Linz and LIT AI Lab, Institute for Machine Learning, JKU Linz, Austria\
 <sup>**2**</sup>Extensity AI, <sup>**3**</sup>Google DeepMind\, <sup>**4**</sup>UCL\, <sup>**5**</sup>NXAI
